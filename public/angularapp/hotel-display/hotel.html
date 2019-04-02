@@ -1,0 +1,21 @@
+<h1>{{vm.hotel.name}}'s info</h1>
+<p>{{vm.hotel.description}}</p>
+<p>This hotel offers the following services:
+<ul>
+<li ng-repeat="service in vm.services">{{service}}</li>
+</ul></p>
+<p> Reviews:</p>
+<ul>
+	<li	ng-repeat="review in vm.hotel.review">{{review.name}} says {{review.review}}. </li>
+</ul>
+<form name="vm.myform" ng-submit="vm.addReview()">
+
+ Your name:<input type="text" name="name" required ng-minlength="2" ng-model="vm.name">
+ <div ng-show="vm.myform.name.$dirty && vm.myform.name.$invalid && vm.isSubmitted">
+ 	<p>Name should be more than 2 characterslong</p>
+ </div>
+ Your Rating:<input type="number" name="Rating" required ng-pattern="/^[1-5]$/" ng-model="vm.Rating">
+ <div ng-show="vm.myform.Rating.$dirty && vm.myform.Rating.$invalid && vm.isSubmitted">
+ 	<p>Rating Should be between 1 to 5</p></div>
+<button type="submit" class="btn">Add review</button>
+</form>
